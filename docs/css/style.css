@@ -7,3 +7,7 @@ button#go-btn {
 html{
     background-color: aqua;
 }
+
+input#throttle{
+    -webkit-appearance: slider-vertical;
+}

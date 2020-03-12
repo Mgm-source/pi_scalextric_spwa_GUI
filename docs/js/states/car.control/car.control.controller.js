@@ -31,7 +31,7 @@
         var channel = $stateParams.channel;
 
         const DEFAULT_THROTTLE = 0;
-        const DEFAULT_SENSOR = 1;
+        
 
         /*
         throttle : is the throttle percentage the user is demanding.
@@ -39,20 +39,12 @@
         resources : is the array holding the available special weapons
         */
         vm.throttle = DEFAULT_THROTTLE;
-        vm.sensorValue = DEFAULT_SENSOR;
+        
         vm.actualThrottle = DEFAULT_THROTTLE;
         vm.resources = [];
         vm.stateName = stateName;
-
-
-        vm.targetChannels = Array.apply(null, {
-            length: 3
-        }).map(Function.call, Number);;
-
-        vm.targetChannels = vm.targetChannels.filter(targetChannel => targetChannel !== channel );
-        console.log(vm.targetChannels);
-
         vm.targetChannel = -1;
+        vm.setId = setId;
 
         //Used to show error message when there is a server error.
         vm.throttleError = false;
@@ -64,16 +56,14 @@
         var throttleTopic = `${brokerDetails.UUID}/control/${channel}/throttle`;
         var getResourcesTopic = `${brokerDetails.UUID}/resources`;
         var resourceStateTopic = `${brokerDetails.UUID}/control/{channel}/{resourceId}/state`;
-        var sensorTopic = `${brokerDetails.UUID}/sensors/3`;
-
-        messageService.subscribe(sensorTopic);
+        
 
         //subscribe to channel throttle
         messageService.subscribe(throttleTopic);
 
         // subscribe to channel resources
         messageService.subscribe(getResourcesTopic);
-
+        
         /*
         Stops the car and returns user back to the index page,
         */
@@ -96,6 +86,19 @@
             { state: "requested", target: [CHANNEL_ID] }
 
         */
+        var rID;
+        function setId(id){
+            if(channel == 1){
+                vm.targetChannel = 0;
+            }
+            if(channel == 0){
+                vm.targetChannel = 1;
+            }
+            rID = vm.resources[id].id;
+            console.log(rID);
+            console.log(vm.targetChannel);
+            fireSpecialWeapon(rID);
+        }
 
         function fireSpecialWeapon(resourceId) {
             let payload = {
