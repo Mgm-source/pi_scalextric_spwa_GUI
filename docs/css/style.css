@@ -2,6 +2,8 @@ button#go-btn {
     position: fixed;
     bottom: 0;
     right: 0;
+    display: block;
+    width: 100%;
 }
 
 html{
@@ -10,4 +12,21 @@ html{
 
 input#throttle{
     -webkit-appearance: slider-vertical;
+    height: 550px;
+    position: relative;
+    text-align: center;
+    animation: 20s slider infinite;
+    display: inline-block
+}
+
+body{
+    background-color: aqua;
+}
+
+div#carouselExampleControls{
+    position: fixed;
+    bottom: 0;
+    right: 0;
+    display: block;
+    width: 100%;
 }
