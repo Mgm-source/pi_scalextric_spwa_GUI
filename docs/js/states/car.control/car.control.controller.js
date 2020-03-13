@@ -31,6 +31,7 @@
         var channel = $stateParams.channel;
 
         const DEFAULT_THROTTLE = 0;
+        var slider = document.getElementById("throttle");
         
 
         /*
