@@ -11,7 +11,8 @@
         '$stateParams',
         'brokerDetails',
         'messageService',
-        'aloneService'
+        'aloneService',
+        '$timeout'
         ];
     
     function carControlCtrl(
@@ -20,7 +21,8 @@
         $stateParams, 
         brokerDetails,
         messageService,
-        aloneService
+        aloneService,
+        $timeout
     ) {
         
         var vm = this;
@@ -29,8 +31,11 @@
         var changed = false;
 
         var channel = $stateParams.channel;
+        var WEAPONS_DISABLED = false;
 
         const DEFAULT_THROTTLE = 0;
+        const WEAPON_DELAY_MS = 5000;
+    
         var slider = document.getElementById("throttle");
         
 
@@ -46,6 +51,7 @@
         vm.stateName = stateName;
         vm.targetChannel = -1;
         vm.setId = setId;
+        vm.WEAPONS_DISABLED = WEAPONS_DISABLED;
 
         //Used to show error message when there is a server error.
         vm.throttleError = false;
@@ -86,8 +92,15 @@
             { state: "requested", target: [CHANNEL_ID] }
 
         */
+
+       
+
         var rID;
         function setId(id){
+            vm.WEAPONS_DISABLED = true;
+            $timeout(function(){
+            vm.WEAPONS_DISABLED = false;
+            },WEAPON_DELAY_MS);
             if(channel == 1){
                 vm.targetChannel = 0;
             }

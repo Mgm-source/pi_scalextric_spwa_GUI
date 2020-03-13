@@ -10,13 +10,13 @@
     <div id="carouselExampleControls" class="carousel slide" data-ride="carousel" data-interval="false">
         <div class="carousel-inner">
           <div class="carousel-item active">
-            <button type="button" class="btn btn-primary btn-lg btn-block" style="border-radius: 0;" ng-click="vm.setId(0)">Oil</button>        
+            <button type="button" ng-disabled="vm.WEAPONS_DISABLED" class="btn btn-primary btn-lg btn-block" style="border-radius: 0;" ng-click="vm.setId(0)">Oil</button>        
           </div>
           <div class="carousel-item">
-            <button type="button" class="btn btn-primary btn-lg btn-block" style="border-radius: 0;" ng-click="vm.setId(1)">Puncture</button>        
+            <button type="button" ng-disabled="vm.WEAPONS_DISABLED" class="btn btn-primary btn-lg btn-block" style="border-radius: 0;" ng-click="vm.setId(1)">Puncture</button>        
           </div>
           <div class="carousel-item">
-            <button type="button" class="btn btn-primary btn-lg btn-block" style="border-radius: 0;" ng-click="vm.setId(2)">Bomb</button>        
+            <button type="button" ng-disabled="vm.WEAPONS_DISABLED" class="btn btn-primary btn-lg btn-block" style="border-radius: 0;" ng-click="vm.setId(2)">Bomb</button>        
           </div>
         </div>
         <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
