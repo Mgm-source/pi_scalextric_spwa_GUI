@@ -51,7 +51,6 @@
         vm.throttleError = false;
 
         vm.stop = stop;
-        vm.fireSpecialWeapon = fireSpecialWeapon;
         
 
         var throttleTopic = `${brokerDetails.UUID}/control/${channel}/throttle`;
