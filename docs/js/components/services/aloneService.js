@@ -15,16 +15,14 @@ function aloneService(brokerDetails, messageService, $state, $timeout) {
     var channelTopic0 = `${brokerDetails.UUID}/channel/0`;
     var channelTopic1 = `${brokerDetails.UUID}/channel/1`;
     var currentTopic = "";
-    var otherTopic = "";
+ 
     var currentChannel = -1;
-    var otherChannel = -1
+   
     var uuid;
     var DELAY_MS = 1000;
     self.initialize = initialize;
     self.currentChannel = currentChannel;
-    self.otherChannel = otherChannel;
     self.currentTopic = currentTopic;
-    self.otherTopic = otherTopic
     self.uuid = uuid;
     self.listenForOthers = listenForOthers;
     self.checkResponse = checkResponse;

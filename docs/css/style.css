@@ -10,6 +10,10 @@ button#go-btn {
     
 }
 
+div#quitDiv{
+  padding-left: 6px;
+}
+
 html{
     background-color: aqua;
     height: 100%;
@@ -19,9 +23,9 @@ html{
 
 div#slider{
     width: 100%;
-    padding-top: 60px;
-    height: 75%;
-    padding-bottom: 40px;
+    padding-top: 20px;
+    height: 70%;
+    padding-bottom: 50px;
 }
 
 body{

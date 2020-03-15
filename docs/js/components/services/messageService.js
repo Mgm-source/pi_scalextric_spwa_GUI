@@ -83,8 +83,8 @@ function messageService(mqttService, brokerDetails, $timeout) {
         mqttService.publish(topicPath, arg);
     }
 
-    function disconnect(){
-        mqttService.disconnect();
+    function disconnect(retryOrNot){
+        mqttService.disconnect(retryOrNot);
     }
 
 

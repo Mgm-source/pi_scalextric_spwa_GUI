@@ -31,6 +31,8 @@ function mqttService($timeout, brokerDetails, $state) {
     var resubscribeListener;
     var _options = {};
     var _counter = 0;
+    var retryOrNot = true;
+    
 
 
 
@@ -93,7 +95,8 @@ function mqttService($timeout, brokerDetails, $state) {
         client.send(mqtt_message);
     }
 
-    function disconnect() {
+    function disconnect(retryOrNo) {
+        retryOrNot = retryOrNo
         if (client) {
             client.disconnect();
         }
@@ -140,8 +143,11 @@ function mqttService($timeout, brokerDetails, $state) {
 
 
     function handleRetryError() {
+        if(retryOrNot){
+            alert("Could not reconnect to MQTT, going back to load screen!");
+        }
+        retryOrNot = true;
         $state.go('splashscreen');
-        alert("Could not reconnect to MQTT, going back to load screen!");
     }
 
     function handleRetries() {
@@ -155,11 +161,16 @@ function mqttService($timeout, brokerDetails, $state) {
 
     function onConnectionLost() {
         console.error("connection lost");
-        $timeout(
-            function () {
-                handleRetries();
-            }
-        );
+        if(retryOrNot){
+            $timeout(
+                function () {
+                    handleRetries();
+                }
+            );
+        }else{
+            handleRetryError();
+        }
+        
     }
 
 }

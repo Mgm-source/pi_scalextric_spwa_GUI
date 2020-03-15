@@ -62,7 +62,10 @@
         var throttleTopic = `${brokerDetails.UUID}/control/${channel}/throttle`;
         var getResourcesTopic = `${brokerDetails.UUID}/resources`;
         var resourceStateTopic = `${brokerDetails.UUID}/control/{channel}/{resourceId}/state`;
-        
+
+
+
+            
 
 
         //subscribe to channel throttle
@@ -75,14 +78,9 @@
         Stops the car and returns user back to the index page,
         */
         function stop() {
-            //stop the car
-            var payload = {
-                set : 0
-            }
-            messageService.publish(throttleTopic, JSON.stringify(payload));
+           var retryOrNot = false;
+            messageService.disconnect(retryOrNot);
             
-            messageService.disconnect();
-            $state.transitionTo('index', {});
         }
 
        
