@@ -156,11 +156,6 @@ function mqttService($timeout, brokerDetails, $state) {
         console.error("connection lost");
         $timeout(
             function () {
-                // client = new Paho.MQTT.Client(
-                //     client.host,
-                //     client.port,
-                //     client.path,
-                //     client.clientId);
                 handleRetries();
             }
         );

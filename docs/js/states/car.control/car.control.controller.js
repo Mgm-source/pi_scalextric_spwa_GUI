@@ -31,7 +31,7 @@
         var changed = false;
 
         var channel = $stateParams.channel;
-        var WEAPONS_DISABLED = true;
+        var WEAPONS_DISABLED = false;
 
         const DEFAULT_THROTTLE = 0;
         const WEAPON_DELAY_MS = 5000;
@@ -59,21 +59,6 @@
         vm.stop = stop;
 
         
-
-        var currentTopic;
-        self.currentTopic = currentTopic;
-        self.currentTopic = `${brokerDetails.UUID}/channel/${vm.channel}`;
-        messageService.subscribe(self.currentTopic, stateName, function(message){
-            if(message.topic == self.currentTopic){
-                console.log("hash: " + uuid);
-                console.log("message: " + message.payloadString.replace(/"/g,""));
-                if(!(uuid==message.payloadString.replace(/"/g,""))){
-                    vm.WEAPONS_DISABLED = false;
-                }
-            }
-        });
-        
-
         var throttleTopic = `${brokerDetails.UUID}/control/${channel}/throttle`;
         var getResourcesTopic = `${brokerDetails.UUID}/resources`;
         var resourceStateTopic = `${brokerDetails.UUID}/control/{channel}/{resourceId}/state`;
