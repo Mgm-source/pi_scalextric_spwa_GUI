@@ -7,6 +7,7 @@ button#go-btn {
     height: 50px;
     font-weight: 400;
     font-size: 1.4rem;
+    
 }
 
 html{
@@ -42,6 +43,7 @@ nav#navTitle{
 
 h1{
     font-size: 2.6rem;
+    color: white;
 }
 
 uiview{
@@ -50,6 +52,8 @@ uiview{
 
 input[type=range] {
     -webkit-appearance: none;
+    transform: rotate(270deg);
+  
     width: 100%;
     margin: 10px 0;
   }
@@ -67,11 +71,11 @@ input[type=range] {
   }
   input[type=range]::-webkit-slider-thumb {
     box-shadow: 1px 1px 1px #111111, 0px 0px 1px #1e1e1e;
-    border: 1px solid white;
+    border: 1px solid black;
     height: 30px;
     width: 30px;
     border-radius: 8px;
-    background: #565ef7;
+    background:rgb(66, 66, 245);
     cursor: pointer;
     -webkit-appearance: none;
     margin-top: -11px;

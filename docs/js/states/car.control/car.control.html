@@ -1,8 +1,9 @@
 <uiview>
+   <button id="go-btn" type="submit" class="btn btn-primary" ng-click="">Quit</button>
     <!-- <span ng-bind="vm.throttle" ng-show="!vm.throttleError"></span> -->
     <span ng-show="vm.throttleError">Error</span>
     <div id="slider">
-        <input type="range" id="throttle" min="0" max="100" value="0" orient="horizontal" class="throttle" ng-model="vm.throttle">
+        <input type="range" id="throttle" min="0" max="100" value="0" orient="vertical" class="throttle" ng-model="vm.throttle">
         <!-- <input type="button" value="Stop" ng-click="vm.stop()"></input> -->
     </div>
     <!-- <span ng-bind="vm.actualThrottle"></span> -->

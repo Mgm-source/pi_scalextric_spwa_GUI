@@ -141,6 +141,7 @@ function mqttService($timeout, brokerDetails, $state) {
 
     function handleRetryError() {
         $state.go('splashscreen');
+        alert("Could not reconnect to MQTT, going back to load screen!");
     }
 
     function handleRetries() {
